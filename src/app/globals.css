@@ -1,26 +1,30 @@
 @import "tailwindcss";
+@import "@heroui/styles";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #f7f8fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a6a;
+  --text-muted: #8a8aa3;
+  --accent: #0d9488;
+  --accent-light: #14b8a6;
+  --accent-dark: #0f766e;
+  --border: #e5e7eb;
+  --shadow: rgba(0, 0, 0, 0.05);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.dark {
+  --bg-primary: #0f0f1a;
+  --bg-secondary: #1a1a2e;
+  --bg-card: #1e1e35;
+  --text-primary: #e8e8f0;
+  --text-secondary: #b0b0cc;
+  --text-muted: #6a6a8a;
+  --accent: #14b8a6;
+  --accent-light: #2dd4bf;
+  --accent-dark: #0d9488;
+  --border: #2a2a45;
+  --shadow: rgba(0, 0, 0, 0.3);
 }
