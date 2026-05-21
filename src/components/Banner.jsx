@@ -17,6 +17,8 @@ const slides = [
     image: slider1,
     gradient:
       "linear-gradient(180deg, #c9e7f4 0%, #dbeefe 25%, #eef6ff 55%, #f8fbff 80%, #ffffff 100%)",
+    darkGradient:
+      "linear-gradient(180deg, #0d2438 0%, #0f1c2b 25%, #0f1521 55%, #0f111d 80%, var(--bg-primary) 100%)",
   },
   {
     id: 2,
@@ -28,6 +30,8 @@ const slides = [
     image: slider2,
     gradient:
       "linear-gradient(180deg, #ddd0f5 0%, #e8def8 25%, #f1ecfb 55%, #f9f7fd 80%, #ffffff 100%)",
+    darkGradient:
+      "linear-gradient(180deg, #231835 0%, #1c152a 25%, #15111e 55%, #100f1c 80%, var(--bg-primary) 100%)",
   },
   {
     id: 3,
@@ -39,11 +43,16 @@ const slides = [
     image: slider3,
     gradient:
       "linear-gradient(180deg, #f8d9b0 0%, #fde8d0 25%, #fef1e3 55%, #fff9f2 80%, #ffffff 100%)",
+    darkGradient:
+      "linear-gradient(180deg, #3a210d 0%, #2a190f 25%, #1c1311 55%, #120e18 80%, var(--bg-primary) 100%)",
   },
 ];
 
+import { useTheme } from "@/components/ThemeProvider";
+
 export default function Banner() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { theme } = useTheme();
 
   const activeSlide = slides[activeIndex];
 
@@ -58,22 +67,22 @@ export default function Banner() {
   return (
     <section
       className="relative min-h-[640px] overflow-hidden md:min-h-[760px] lg:min-h-[860px]"
-      style={{ background: activeSlide.gradient }}
+      style={{ background: theme === "dark" ? activeSlide.darkGradient : activeSlide.gradient }}
     >
       <div className="relative z-10 mx-auto flex min-h-[640px] max-w-7xl flex-col items-center px-5 pt-16 text-center md:min-h-[760px] md:pt-20 lg:min-h-[860px] lg:pt-28">
-        <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-slate-800 md:text-sm">
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-slate-800 dark:text-slate-300 md:text-sm">
           {activeSlide.subtitle}
         </p>
 
-        <h1 className="whitespace-pre-line text-[42px] font-semibold leading-[1.05] tracking-[-0.04em] text-[#063f49] md:text-6xl lg:text-7xl">
+        <h1 className="whitespace-pre-line text-[42px] font-semibold leading-[1.05] tracking-[-0.04em] text-[#063f49] dark:text-teal-200 md:text-6xl lg:text-7xl">
           {activeSlide.heading}
         </h1>
 
-        <p className="mt-5 max-w-xl text-sm leading-7 text-slate-700 md:text-base">
+        <p className="mt-5 max-w-xl text-sm leading-7 text-slate-700 dark:text-slate-300 md:text-base">
           {activeSlide.description}
         </p>
 
-        <button className="mt-8 rounded-full bg-black px-7 py-3 text-sm font-semibold text-white transition hover:scale-105 hover:bg-[#063f49]">
+        <button className="mt-8 rounded-full bg-black dark:bg-teal-600 px-7 py-3 text-sm font-semibold text-white transition hover:scale-105 hover:bg-[#063f49] dark:hover:bg-teal-500">
           {activeSlide.cta}
         </button>
 
@@ -84,8 +93,8 @@ export default function Banner() {
               onClick={() => setActiveIndex(index)}
               className={`h-2.5 rounded-full transition-all ${
                 activeIndex === index
-                  ? "w-8 bg-[#063f49]"
-                  : "w-2.5 bg-slate-400/60"
+                  ? "w-8 bg-[#063f49] dark:bg-teal-400"
+                  : "w-2.5 bg-slate-400/60 dark:bg-slate-600/60"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
