@@ -60,7 +60,7 @@ export default function Banner() {
       className="relative min-h-[640px] overflow-hidden md:min-h-[760px] lg:min-h-[860px]"
       style={{ background: activeSlide.gradient }}
     >
-      <div className="relative z-10 mx-auto flex min-h-[640px] max-w-7xl flex-col items-center px-5 pt-16 text-center md:min-h-[760px] md:pt-20 lg:min-h-[860px] lg:pt-24">
+      <div className="relative z-10 mx-auto flex min-h-[640px] max-w-7xl flex-col items-center px-5 pt-16 text-center md:min-h-[760px] md:pt-20 lg:min-h-[860px] lg:pt-28">
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-slate-800 md:text-sm">
           {activeSlide.subtitle}
         </p>
