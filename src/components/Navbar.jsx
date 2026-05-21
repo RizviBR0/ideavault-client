@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { FaLightbulb } from "react-icons/fa";
+import { FaLightbulb, FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "@/components/ThemeProvider";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const links = [
     { name: "Home", href: "/" },
@@ -24,8 +26,8 @@ export default function Navbar() {
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
         <div className="flex justify-center items-center gap-12">
           <Link href="/" className="flex items-center gap-1.5">
-            <FaLightbulb className="text-xl text-[#063f49]" />
-            <span className="text-2xl font-black tracking-[-0.04em] text-[#063f49]">
+            <FaLightbulb className="text-xl text-[var(--accent-dark)]" />
+            <span className="text-2xl font-black tracking-[-0.04em] text-[var(--text-primary)]">
               IdeaVault
             </span>
           </Link>
@@ -37,8 +39,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-sm font-semibold transition ${
                   isActive(link.href)
-                    ? "text-black hover:underline"
-                    : "text-slate-800 hover:underline"
+                    ? "text-[var(--accent-dark)] hover:underline"
+                    : "text-[var(--text-secondary)] hover:underline"
                 }`}
               >
                 {link.name}
@@ -47,22 +49,38 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--bg-secondary)] text-[var(--text-primary)] shadow transition hover:scale-110"
+            aria-label="Toggle dark mode"
+          >
+            {theme === "dark" ? <FaSun /> : <FaMoon />}
+          </button>
           <Link
             href="/login"
-            className="rounded-full bg-black px-8 py-3 text-sm font-bold text-white transition hover:bg-[#063f49]"
+            className="rounded-full bg-[var(--accent-dark)] px-8 py-3 text-sm font-bold text-white transition hover:bg-black"
           >
             Login
           </Link>
         </div>
 
-        <button
-          onClick={() => setOpenMenu(!openMenu)}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white lg:hidden"
-          aria-label="Toggle menu"
-        >
-          {openMenu ? "✕" : "☰"}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <button
+            onClick={toggleTheme}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--bg-secondary)] text-[var(--text-primary)] shadow transition"
+            aria-label="Toggle dark mode"
+          >
+            {theme === "dark" ? <FaSun /> : <FaMoon />}
+          </button>
+          <button
+            onClick={() => setOpenMenu(!openMenu)}
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-black text-white lg:hidden"
+            aria-label="Toggle menu"
+          >
+            {openMenu ? "✕" : "☰"}
+          </button>
+        </div>
       </nav>
 
       {openMenu && (
