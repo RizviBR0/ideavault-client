@@ -14,8 +14,12 @@ import {
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 const AddIdeaPage = () => {
+  useEffect(() => {
+    document.title = "IdeaVault - Share Idea";
+  }, []);
   const { data: session } = authClient.useSession();
   const user = session?.user;
 

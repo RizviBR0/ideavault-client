@@ -24,6 +24,31 @@ const categoryColors = {
   Other: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
 };
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  try {
+    const { token } = await auth.api.getToken({
+      headers: await headers(),
+    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/ideas/${id}`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    const idea = await res.json();
+    if (idea && idea.title) {
+      return {
+        title: `IdeaVault - ${idea.title}`,
+      };
+    }
+  } catch {
+    // fallback
+  }
+  return {
+    title: "IdeaVault - Idea Details",
+  };
+}
+
 export default async function IdeaDetailsPage({ params }) {
   const { id } = await params;
   const { token } = await auth.api.getToken({

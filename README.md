@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# IdeaVault - Startup Idea Discovery & Collaboration Hub
 
-## Getting Started
+### 🌐 Live Site URL: [https://ideavault-client.vercel.app](https://ideavault-client.vercel.app)
 
-First, run the development server:
+IdeaVault is a premium, state-of-the-art startup incubator and collaboration portal that empowers innovators to seed startup concepts, gather validation, engage in detailed discussions, and monitor community interactions through a stunning, glassmorphic visual system.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Key Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **🔐 Robust Authentication:**
+  Powered by `better-auth`, featuring email & password registration with dynamic complexity checks, instant Google Single Sign-on (SSO), and session guards defending private dashboards.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **💡 Idea Catalog with Regex Search & Filters:**
+  Discover a diverse feed of concepts structured in a premium 3-column grid. Features active case-insensitive title search (debounced for performance) and instant category categorization.
 
-## Learn More
+- **💬 Real-Time Discussion Boards:**
+  Submit ideas, and participate in discussion threads under every concept. Authors possess complete self-service inline text editing (Save/Cancel textareas) and immediate deletion controls.
 
-To learn more about Next.js, take a look at the following resources:
+- **📊 Creator's Personal Dashboard (CRUD):**
+  Review all your submitted ideas in a sleek "My Ideas" control center. Update any details dynamically using the pre-filled HeroUI `Modal` forms or delete concepts using an `AlertDialog` confirmation check.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **🔄 Collapsible Interaction Ledger:**
+  The "My Interactions" panel maps all comments back to their original concepts, rendering a history of all platform engagement in custom collapsible accordion elements.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **🎨 Premium Dark/Light Theme Engine:**
+  A comprehensive global state engine bound directly to CSS utility variables and Tailwind CSS v4 design rules. Styled utilizing custom HSL colors, smooth transitions, hand-drawn vector details, and responsive border alignment.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Technology Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Frontend (Client)
+
+- **Core Framework:** Next.js 16.2.6 & React 19.2.4
+- **Styling:** Tailwind CSS v4, PostCSS, React Icons
+- **Design System Components:** `@heroui/react` (HeroUI components)
+- **Authentication:** `better-auth` client with JWKS-based JWT token exchange
+- **Alerts:** `react-hot-toast`
+
+### Backend (Server)
+
+- **Core Runtime:** Node.js, Express.js CORS configuration
+- **Database:** MongoDB Native Node.js Driver
+- **Security:** `jose-cjs` verifying Bearer tokens against Next.js public JWKS endpoints

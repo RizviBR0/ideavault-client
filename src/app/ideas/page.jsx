@@ -16,6 +16,10 @@ export default function IdeasPage() {
   const [category, setCategory] = useState("");
 
   useEffect(() => {
+    document.title = "IdeaVault - Explore Ideas";
+  }, []);
+
+  useEffect(() => {
     const fetchIdeas = async () => {
       setLoading(true);
       try {

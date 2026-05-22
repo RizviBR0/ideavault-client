@@ -16,10 +16,14 @@ import { FiMail, FiLock, FiUser, FiImage, FiEye, FiEyeOff } from "react-icons/fi
 import toast from "react-hot-toast";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import signupImg from "../../assets/signup.png";
 
 const SignUpPage = () => {
+  useEffect(() => {
+    document.title = "IdeaVault - Sign Up";
+  }, []);
+
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -55,7 +59,6 @@ const SignUpPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-[#eef2ff] to-[#fce7f3] dark:from-[#0d1117] dark:to-[#161b22] px-5 py-24">
       <div className="max-w-5xl w-full flex flex-col md:flex-row items-center gap-10 lg:gap-20">
         
-        {/* Left Side - Illustration */}
         <div className="hidden md:flex flex-1 justify-center">
           <Image
             src={signupImg}
@@ -65,7 +68,6 @@ const SignUpPage = () => {
           />
         </div>
 
-        {/* Right Side - Form Card */}
         <Card className="flex-1 w-full max-w-md p-8 sm:p-10 rounded-[32px] shadow-xl bg-white dark:bg-(--bg-card) border-none">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-black text-[#063f49] dark:text-teal-400 mb-3 tracking-tight">
@@ -77,20 +79,18 @@ const SignUpPage = () => {
           </div>
 
           <Form onSubmit={onSubmit} className="flex w-full flex-col gap-5">
-            <TextField isRequired name="name" type="text">
-              <Label className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+            <TextField isRequired name="name" type="text" className="flex flex-col w-full">
+              <Label className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                 Name
               </Label>
-              <Input
-                placeholder="Enter your full name"
-                startContent={<FiUser className="text-slate-400 mr-2" />}
-                className="w-full"
-                classNames={{
-                  inputWrapper: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#063f49] focus-within:border-[#063f49] focus-within:ring-1 focus-within:ring-[#063f49] transition-all rounded-xl",
-                  input: "text-sm",
-                }}
-              />
-              <FieldError className="text-xs text-red-500 mt-1" />
+              <div className="relative w-full">
+                <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-base" />
+                <Input
+                  placeholder="Enter your full name"
+                  className="w-full pl-11 pr-4 py-3 text-sm font-semibold rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-[#063f49] dark:focus:border-teal-500 transition-all"
+                />
+              </div>
+              <FieldError className="text-xs text-rose-500 mt-1.5 font-semibold" />
             </TextField>
 
             <TextField
@@ -103,36 +103,33 @@ const SignUpPage = () => {
                 }
                 return null;
               }}
+              className="flex flex-col w-full"
             >
-              <Label className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+              <Label className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                 Email
               </Label>
-              <Input
-                placeholder="Enter your email"
-                startContent={<FiMail className="text-slate-400 mr-2" />}
-                className="w-full"
-                classNames={{
-                  inputWrapper: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#063f49] focus-within:border-[#063f49] focus-within:ring-1 focus-within:ring-[#063f49] transition-all rounded-xl",
-                  input: "text-sm",
-                }}
-              />
-              <FieldError className="text-xs text-red-500 mt-1" />
+              <div className="relative w-full">
+                <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-base" />
+                <Input
+                  placeholder="Enter your email"
+                  className="w-full pl-11 pr-4 py-3 text-sm font-semibold rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-[#063f49] dark:focus:border-teal-500 transition-all"
+                />
+              </div>
+              <FieldError className="text-xs text-rose-500 mt-1.5 font-semibold" />
             </TextField>
 
-            <TextField name="image" type="url">
-              <Label className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+            <TextField name="image" type="url" className="flex flex-col w-full">
+              <Label className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                 Photo URL
               </Label>
-              <Input
-                placeholder="Enter your photo URL (optional)"
-                startContent={<FiImage className="text-slate-400 mr-2" />}
-                className="w-full"
-                classNames={{
-                  inputWrapper: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#063f49] focus-within:border-[#063f49] focus-within:ring-1 focus-within:ring-[#063f49] transition-all rounded-xl",
-                  input: "text-sm",
-                }}
-              />
-              <FieldError className="text-xs text-red-500 mt-1" />
+              <div className="relative w-full">
+                <FiImage className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-base" />
+                <Input
+                  placeholder="Enter your photo URL (optional)"
+                  className="w-full pl-11 pr-4 py-3 text-sm font-semibold rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-[#063f49] dark:focus:border-teal-500 transition-all"
+                />
+              </div>
+              <FieldError className="text-xs text-rose-500 mt-1.5 font-semibold" />
             </TextField>
 
             <TextField
@@ -152,33 +149,30 @@ const SignUpPage = () => {
                 }
                 return null;
               }}
+              className="flex flex-col w-full"
             >
-              <Label className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+              <Label className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                 Password
               </Label>
-              <Input
-                placeholder="Create a password"
-                startContent={<FiLock className="text-slate-400 mr-2" />}
-                endContent={
-                  <button
-                    className="focus:outline-none"
-                    type="button"
-                    onClick={toggleVisibility}
-                  >
-                    {isVisible ? (
-                      <FiEyeOff className="text-slate-400 text-lg hover:text-slate-600 transition" />
-                    ) : (
-                      <FiEye className="text-slate-400 text-lg hover:text-slate-600 transition" />
-                    )}
-                  </button>
-                }
-                className="w-full"
-                classNames={{
-                  inputWrapper: "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:border-[#063f49] focus-within:border-[#063f49] focus-within:ring-1 focus-within:ring-[#063f49] transition-all rounded-xl",
-                  input: "text-sm",
-                }}
-              />
-              <FieldError className="text-xs text-red-500 mt-1" />
+              <div className="relative w-full">
+                <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-base" />
+                <Input
+                  placeholder="Create a password"
+                  className="w-full pl-11 pr-12 py-3 text-sm font-semibold rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-[#063f49] dark:focus:border-teal-500 transition-all"
+                />
+                <button
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 focus:outline-none cursor-pointer"
+                  type="button"
+                  onClick={toggleVisibility}
+                >
+                  {isVisible ? (
+                    <FiEyeOff className="text-base" />
+                  ) : (
+                    <FiEye className="text-base" />
+                  )}
+                </button>
+              </div>
+              <FieldError className="text-xs text-rose-500 mt-1.5 font-semibold" />
             </TextField>
 
             <Button
