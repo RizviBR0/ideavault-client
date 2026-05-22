@@ -47,7 +47,7 @@ const features = [
 
 const InnovationEngine = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-transparent to-slate-50/50 dark:to-slate-900/30">
+    <section className="py-20 bg-linear-to-b from-transparent to-slate-50/50 dark:to-slate-900/30">
       <div className="max-w-7xl mx-auto px-5 lg:px-8">
         <div className="text-center mb-14">
           <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#063f49] dark:text-teal-400 mb-3">
@@ -67,7 +67,7 @@ const InnovationEngine = () => {
               key={feature.title}
               className={`group relative rounded-2xl p-7 ${feature.bg} border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl`}
             >
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} text-white text-xl mb-5 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-linear-to-br ${feature.color} text-white text-xl mb-5 shadow-md group-hover:scale-110 transition-transform duration-300`}>
                 {feature.icon}
               </div>
 

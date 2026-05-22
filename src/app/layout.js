@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${raleway.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]">
+      <body className="min-h-full flex flex-col bg-(--bg-primary) text-(--text-primary)">
         <ThemeProvider>
           <Navbar />
           {children}

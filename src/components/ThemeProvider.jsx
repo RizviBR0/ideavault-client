@@ -10,9 +10,9 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
-      setTheme(storedTheme);
+      queueMicrotask(() => setTheme(storedTheme));
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
+      queueMicrotask(() => setTheme("dark"));
     }
   }, []);
 

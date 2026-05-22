@@ -25,7 +25,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-[#c9e7f4] to-[#ffffff] dark:from-[#0d2438] dark:to-[var(--bg-primary)]">
+    <footer className="bg-linear-to-b from-[#c9e7f4] to-[#ffffff] dark:from-[#0d2438] dark:to-(--bg-primary)">
       <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
         <div className="mb-14">
           <Image

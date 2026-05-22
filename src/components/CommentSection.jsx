@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FiUser, FiSend, FiEdit2, FiTrash2, FiX, FiCheck } from "react-icons/fi";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
@@ -16,7 +17,7 @@ const CommentSection = ({ ideaId }) => {
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState("");
 
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${ideaId}`,
@@ -28,11 +29,14 @@ const CommentSection = ({ ideaId }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [ideaId]);
 
   useEffect(() => {
-    fetchComments();
-  }, [ideaId]);
+    const initFetch = async () => {
+      await fetchComments();
+    };
+    initFetch();
+  }, [fetchComments]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -217,12 +221,12 @@ const CommentSection = ({ ideaId }) => {
         <div className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-800 text-center">
           <p className="text-sm text-slate-500 dark:text-slate-400">
             Please{" "}
-            <a
+            <Link
               href="/login"
               className="font-bold text-[#063f49] dark:text-teal-400 hover:underline"
             >
               login
-            </a>{" "}
+            </Link>{" "}
             to join the discussion.
           </p>
         </div>

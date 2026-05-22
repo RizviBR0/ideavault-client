@@ -36,7 +36,7 @@ export default function InteractionsList({ interactions }) {
           No Engagement Yet
         </h2>
         <p className="text-sm text-slate-500 dark:text-slate-400 font-semibold mb-8 max-w-md mx-auto leading-relaxed">
-          You haven't posted any comments or contributed to discussions yet. Start discovering startup ideas and share your thoughts!
+          You haven&apos;t posted any comments or contributed to discussions yet. Start discovering startup ideas and share your thoughts!
         </p>
         <Link
           href="/ideas"

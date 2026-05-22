@@ -48,7 +48,7 @@ export function DeleteIdeaAlert({ idea, onSuccess }) {
 
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
-          <AlertDialog.Dialog className="sm:max-w-[440px] bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl p-6">
+          <AlertDialog.Dialog className="sm:max-w-110 bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl p-6">
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header className="flex gap-3 items-center mb-4">
               <AlertDialog.Icon status="danger" className="text-red-500" />

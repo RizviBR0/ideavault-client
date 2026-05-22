@@ -75,7 +75,7 @@ export default async function MyInteractionsPage() {
   );
 
   return (
-    <div className="px-5 pt-28 pb-16 max-w-7xl mx-auto w-full flex-grow">
+    <div className="px-5 pt-28 pb-16 max-w-7xl mx-auto w-full grow">
       <div className="mb-10">
         <h1 className="text-3xl font-black text-[#063f49] dark:text-teal-400">
           My Interactions
