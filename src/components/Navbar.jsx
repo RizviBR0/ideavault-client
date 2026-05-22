@@ -5,11 +5,18 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaLightbulb, FaMoon, FaSun } from "react-icons/fa";
 import { useTheme } from "@/components/ThemeProvider";
+import { authClient } from "@/lib/auth-client";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+  };
 
   const links = [
     { name: "Home", href: "/" },
@@ -57,12 +64,35 @@ export default function Navbar() {
           >
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
-          <Link
-            href="/login"
-            className="rounded-full bg-[var(--accent-dark)] px-8 py-3 text-sm font-bold text-white transition hover:bg-black"
-          >
-            Login
-          </Link>
+
+          {user ? (
+            <>
+              <span className="text-sm font-semibold text-[var(--text-primary)]">
+                {user.name}
+              </span>
+              <button
+                onClick={handleSignOut}
+                className="rounded-full bg-red-500 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-red-600"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="rounded-full bg-[var(--accent-dark)] px-8 py-3 text-sm font-bold text-white transition hover:bg-black"
+              >
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                className="rounded-full border border-[var(--accent-dark)] px-8 py-3 text-sm font-bold text-[var(--accent-dark)] transition hover:bg-[var(--accent-dark)] hover:text-white"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
@@ -84,7 +114,7 @@ export default function Navbar() {
       </nav>
 
       {openMenu && (
-        <div className="border-t border-sky-100 bg-[#eaf8ff] px-5 pb-6 lg:hidden">
+        <div className="border-t border-sky-100 bg-[#eaf8ff] dark:bg-[var(--bg-secondary)] px-5 pb-6 lg:hidden">
           <div className="flex flex-col gap-2">
             {links.map((link) => (
               <Link
@@ -93,21 +123,33 @@ export default function Navbar() {
                 onClick={() => setOpenMenu(false)}
                 className={`rounded-2xl px-4 py-3 text-sm font-bold ${
                   isActive(link.href)
-                    ? "bg-white text-[#063f49]"
-                    : "text-slate-800 hover:bg-white"
+                    ? "bg-white dark:bg-[var(--bg-card)] text-[var(--accent-dark)]"
+                    : "text-[var(--text-secondary)] hover:bg-white dark:hover:bg-[var(--bg-card)]"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
 
-            <Link
-              href="/login"
-              onClick={() => setOpenMenu(false)}
-              className="mt-3 rounded-full bg-black px-6 py-3 text-center text-sm font-bold text-white"
-            >
-              Login/Register
-            </Link>
+            {user ? (
+              <button
+                onClick={() => {
+                  handleSignOut();
+                  setOpenMenu(false);
+                }}
+                className="mt-3 rounded-full bg-red-500 px-6 py-3 text-center text-sm font-bold text-white"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setOpenMenu(false)}
+                className="mt-3 rounded-full bg-black px-6 py-3 text-center text-sm font-bold text-white"
+              >
+                Login/Register
+              </Link>
+            )}
           </div>
         </div>
       )}

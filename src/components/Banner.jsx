@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTheme } from "@/components/ThemeProvider";
 
 import slider1 from "../assets/slider1.png";
 import slider2 from "../assets/slider2.png";
 import slider3 from "../assets/slider3.png";
+import Image from "next/image";
 
 const slides = [
   {
@@ -48,8 +50,6 @@ const slides = [
   },
 ];
 
-import { useTheme } from "@/components/ThemeProvider";
-
 export default function Banner() {
   const [activeIndex, setActiveIndex] = useState(0);
   const { theme } = useTheme();
@@ -66,10 +66,13 @@ export default function Banner() {
 
   return (
     <section
-      className="relative min-h-[640px] overflow-hidden md:min-h-[760px] lg:min-h-[860px]"
-      style={{ background: theme === "dark" ? activeSlide.darkGradient : activeSlide.gradient }}
+      className="relative min-h-160 overflow-hidden md:min-h-190 lg:min-h-215"
+      style={{
+        background:
+          theme === "dark" ? activeSlide.darkGradient : activeSlide.gradient,
+      }}
     >
-      <div className="relative z-10 mx-auto flex min-h-[640px] max-w-7xl flex-col items-center px-5 pt-16 text-center md:min-h-[760px] md:pt-20 lg:min-h-[860px] lg:pt-28">
+      <div className="relative z-10 mx-auto flex min-h-160 max-w-7xl flex-col items-center px-5 pt-16 text-center md:min-h-190 md:pt-20 lg:min-h-215 lg:pt-28">
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-slate-800 dark:text-slate-300 md:text-sm">
           {activeSlide.subtitle}
         </p>
@@ -103,10 +106,12 @@ export default function Banner() {
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 flex justify-center">
-        <img
-          src={activeSlide.image.src}
+        <Image
+          width={800}
+          height={600}
+          src={activeSlide.image}
           alt={activeSlide.heading.replace("\n", " ")}
-          className="w-full max-w-[800px] translate-y-2 object-contain px-2 transition-all duration-700 ease-in-out sm:px-6 md:translate-y-4"
+          className="w-full max-w-200 translate-y-2 object-contain px-2 transition-all duration-700 ease-in-out sm:px-6 md:translate-y-4"
         />
       </div>
     </section>
