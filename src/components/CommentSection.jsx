@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { FiUser, FiSend } from "react-icons/fi";
+import { FiUser, FiSend, FiEdit2, FiTrash2, FiX, FiCheck } from "react-icons/fi";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 
@@ -13,6 +13,8 @@ const CommentSection = ({ ideaId }) => {
   const [loading, setLoading] = useState(true);
   const [commentText, setCommentText] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [editingId, setEditingId] = useState(null);
+  const [editText, setEditText] = useState("");
 
   const fetchComments = async () => {
     try {
@@ -82,6 +84,66 @@ const CommentSection = ({ ideaId }) => {
       toast.error("Something went wrong");
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleEdit = async (commentId) => {
+    if (!editText.trim()) return;
+
+    try {
+      const { data: tokenData } = await authClient.token();
+
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${commentId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${tokenData?.token}`,
+          },
+          body: JSON.stringify({ text: editText.trim() }),
+        },
+      );
+
+      const data = await res.json();
+
+      if (data.modifiedCount > 0) {
+        toast.success("Comment updated!");
+        setEditingId(null);
+        setEditText("");
+        fetchComments();
+      } else {
+        toast.error("Failed to update comment");
+      }
+    } catch {
+      toast.error("Something went wrong");
+    }
+  };
+
+  const handleDelete = async (commentId) => {
+    try {
+      const { data: tokenData } = await authClient.token();
+
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${commentId}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${tokenData?.token}`,
+          },
+        },
+      );
+
+      const data = await res.json();
+
+      if (data.deletedCount > 0) {
+        toast.success("Comment deleted!");
+        fetchComments();
+      } else {
+        toast.error("Failed to delete comment");
+      }
+    } catch {
+      toast.error("Something went wrong");
     }
   };
 
@@ -197,17 +259,68 @@ const CommentSection = ({ ideaId }) => {
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-3 mb-1.5">
-                    <span className="text-sm font-black text-slate-800 dark:text-slate-200">
-                      {comment.userName}
-                    </span>
-                    <span className="text-xs text-slate-400 dark:text-slate-500">
-                      {formatTimeAgo(comment.createdAt)}
-                    </span>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm font-black text-slate-800 dark:text-slate-200">
+                        {comment.userName}
+                      </span>
+                      <span className="text-xs text-slate-400 dark:text-slate-500">
+                        {formatTimeAgo(comment.createdAt)}
+                      </span>
+                    </div>
+                    {user?.id === comment.userId && editingId !== comment._id && (
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => {
+                            setEditingId(comment._id);
+                            setEditText(comment.text);
+                          }}
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#063f49] dark:hover:text-teal-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
+                        >
+                          <FiEdit2 className="text-sm" />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(comment._id)}
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition cursor-pointer"
+                        >
+                          <FiTrash2 className="text-sm" />
+                        </button>
+                      </div>
+                    )}
                   </div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {comment.text}
-                  </p>
+
+                  {editingId === comment._id ? (
+                    <div>
+                      <textarea
+                        value={editText}
+                        onChange={(e) => setEditText(e.target.value)}
+                        rows={2}
+                        className="w-full px-4 py-3 text-sm font-semibold rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-300 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-[#063f49] dark:focus:border-teal-500 transition-all resize-none"
+                      />
+                      <div className="flex items-center gap-2 mt-2">
+                        <button
+                          onClick={() => handleEdit(comment._id)}
+                          disabled={!editText.trim()}
+                          className="inline-flex items-center gap-1.5 rounded-full bg-[#063f49] dark:bg-teal-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-black disabled:opacity-50 cursor-pointer"
+                        >
+                          <FiCheck className="text-xs" /> Save
+                        </button>
+                        <button
+                          onClick={() => {
+                            setEditingId(null);
+                            setEditText("");
+                          }}
+                          className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-300 px-4 py-1.5 text-xs font-bold text-slate-500 dark:text-slate-400 transition hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+                        >
+                          <FiX className="text-xs" /> Cancel
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {comment.text}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
