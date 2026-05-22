@@ -129,7 +129,7 @@ export default async function IdeaDetailsPage({ params }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
-            <div className="rounded-3xl overflow-hidden bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 shadow-md">
+            <div className="rounded-3xl overflow-hidden bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-md">
               {imageUrl && (
                 <div className="relative w-full h-80 sm:h-96 md:h-[450px]">
                   <Image
@@ -155,7 +155,7 @@ export default async function IdeaDetailsPage({ params }) {
                   {tagList.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-slate-200 dark:border-slate-800 px-4 py-1 text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/50"
+                      className="rounded-full border border-slate-200 dark:border-slate-300 px-4 py-1 text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/50"
                     >
                       #{tag}
                     </span>
@@ -163,7 +163,7 @@ export default async function IdeaDetailsPage({ params }) {
                 </div>
 
                 <div className="space-y-8">
-                  <div className="border-t border-slate-100 dark:border-slate-800 pt-8">
+                  <div className="border-t border-slate-100 dark:border-slate-300 pt-8">
                     <h3 className="text-lg font-black text-[#063f49] dark:text-teal-400 mb-3">
                       The Problem Statement
                     </h3>
@@ -172,7 +172,7 @@ export default async function IdeaDetailsPage({ params }) {
                     </p>
                   </div>
 
-                  <div className="border-t border-slate-100 dark:border-slate-800 pt-8">
+                  <div className="border-t border-slate-100 dark:border-slate-300 pt-8">
                     <h3 className="text-lg font-black text-[#063f49] dark:text-teal-400 mb-3">
                       The Proposed Solution
                     </h3>
@@ -188,8 +188,8 @@ export default async function IdeaDetailsPage({ params }) {
           </div>
 
           <div className="space-y-8">
-            <div className="rounded-3xl p-6 sm:p-8 bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 shadow-md">
-              <h3 className="text-lg font-black text-[#063f49] dark:text-teal-400 mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">
+            <div className="rounded-3xl p-6 sm:p-8 bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-md">
+              <h3 className="text-lg font-black text-[#063f49] dark:text-teal-400 mb-6 border-b border-slate-100 dark:border-slate-300 pb-4">
                 Idea Overview
               </h3>
 
@@ -252,8 +252,8 @@ export default async function IdeaDetailsPage({ params }) {
               </div>
             </div>
 
-            <div className="rounded-3xl p-6 sm:p-8 bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 shadow-md">
-              <h3 className="text-lg font-black text-[#063f49] dark:text-teal-400 mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">
+            <div className="rounded-3xl p-6 sm:p-8 bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-md">
+              <h3 className="text-lg font-black text-[#063f49] dark:text-teal-400 mb-6 border-b border-slate-100 dark:border-slate-300 pb-4">
                 The Founder
               </h3>
 
@@ -274,13 +274,10 @@ export default async function IdeaDetailsPage({ params }) {
                   <h4 className="font-black text-slate-800 dark:text-slate-200">
                     {userName}
                   </h4>
-                  <p className="text-xs font-bold text-teal-600 dark:text-teal-400">
-                    Verified Innovator
-                  </p>
                 </div>
               </div>
 
-              <div className="space-y-4 border-t border-slate-100 dark:border-slate-800 pt-4">
+              <div className="space-y-4 border-t border-slate-100 dark:border-slate-300 pt-4">
                 <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
                   <FiMail className="shrink-0" />
                   <span className="truncate">{userEmail}</span>

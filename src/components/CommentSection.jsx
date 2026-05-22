@@ -17,7 +17,7 @@ const CommentSection = ({ ideaId }) => {
   const fetchComments = async () => {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${ideaId}`
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${ideaId}`,
       );
       const data = await res.json();
       setComments(data || []);
@@ -66,7 +66,7 @@ const CommentSection = ({ ideaId }) => {
             authorization: `Bearer ${tokenData?.token}`,
           },
           body: JSON.stringify(commentData),
-        }
+        },
       );
 
       const data = await res.json();
@@ -105,15 +105,18 @@ const CommentSection = ({ ideaId }) => {
   };
 
   return (
-    <div className="rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 shadow-md overflow-hidden">
-      <div className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-800">
+    <div className="rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-md overflow-hidden">
+      <div className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-300">
         <h3 className="text-lg font-black text-[#063f49] dark:text-teal-400">
           Discussion ({comments.length})
         </h3>
       </div>
 
       {user ? (
-        <form onSubmit={handleSubmit} className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-800">
+        <form
+          onSubmit={handleSubmit}
+          className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-300"
+        >
           <div className="flex items-start gap-4">
             <div className="relative w-10 h-10 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0">
               {user.image ? (
@@ -133,7 +136,7 @@ const CommentSection = ({ ideaId }) => {
                 onChange={(e) => setCommentText(e.target.value)}
                 placeholder="Share your thoughts on this idea..."
                 rows={3}
-                className="w-full px-4 py-3 text-sm font-semibold rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#063f49] dark:focus:border-teal-500 transition-all resize-none"
+                className="w-full px-4 py-3 text-sm font-semibold rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-300 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-[#063f49] dark:focus:border-teal-500 transition-all resize-none"
               />
               <div className="flex justify-end mt-3">
                 <button
@@ -149,10 +152,13 @@ const CommentSection = ({ ideaId }) => {
           </div>
         </form>
       ) : (
-        <div className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-800 text-center">
+        <div className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-300 text-center">
           <p className="text-sm text-slate-500 dark:text-slate-400">
             Please{" "}
-            <a href="/login" className="font-bold text-[#063f49] dark:text-teal-400 hover:underline">
+            <a
+              href="/login"
+              className="font-bold text-[#063f49] dark:text-teal-400 hover:underline"
+            >
               login
             </a>{" "}
             to join the discussion.
