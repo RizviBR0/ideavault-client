@@ -52,7 +52,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#eef2ff] to-[#fce7f3] dark:from-[#0d1117] dark:to-[#161b22] px-5 py-24">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-[#eef2ff] to-[#fce7f3] dark:from-[#0d1117] dark:to-[#161b22] px-5 py-24">
       <div className="max-w-5xl w-full flex flex-col md:flex-row items-center gap-10 lg:gap-20">
         
         {/* Left Side - Illustration */}
@@ -60,13 +60,13 @@ const SignUpPage = () => {
           <Image
             src={signupImg}
             alt="Sign Up Illustration"
-            className="w-full max-w-[500px] object-contain animate-fade-up"
+            className="w-full max-w-125 object-contain animate-fade-up"
             priority
           />
         </div>
 
         {/* Right Side - Form Card */}
-        <Card className="flex-1 w-full max-w-md p-8 sm:p-10 rounded-[32px] shadow-xl bg-white dark:bg-[var(--bg-card)] border-none">
+        <Card className="flex-1 w-full max-w-md p-8 sm:p-10 rounded-[32px] shadow-xl bg-white dark:bg-(--bg-card) border-none">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-black text-[#063f49] dark:text-teal-400 mb-3 tracking-tight">
               Create Your Account
