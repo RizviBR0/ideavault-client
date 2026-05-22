@@ -7,6 +7,7 @@ import bulb from "@/assets/bulb.png";
 import cloud from "@/assets/cloud.png";
 import paperPlane from "@/assets/paper_plane.png";
 import star from "@/assets/star.png";
+import CommentSection from "@/components/CommentSection";
 
 const categoryColors = {
   Tech: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
@@ -182,6 +183,8 @@ export default async function IdeaDetailsPage({ params }) {
                 </div>
               </div>
             </div>
+
+            <CommentSection ideaId={id} />
           </div>
 
           <div className="space-y-8">
