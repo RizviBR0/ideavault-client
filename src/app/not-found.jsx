@@ -14,7 +14,7 @@ export default function NotFound() {
       <div className="absolute top-20 left-20 h-72 w-72 rounded-full bg-teal-500/10 blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-[#063f49]/10 dark:bg-teal-500/5 blur-3xl animate-pulse" />
 
-      <div className="relative backdrop-blur-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-300 rounded-3xl p-10 md:p-14 max-w-xl w-full shadow-2xl text-center">
+      <div className="relative backdrop-blur-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-10 md:p-14 max-w-xl w-full shadow-2xl text-center">
         <div className="mx-auto w-fit mb-6 p-5 rounded-full bg-rose-500/10 border border-rose-500/20">
           <FiAlertTriangle className="w-12 h-12 text-rose-500" />
         </div>

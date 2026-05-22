@@ -75,9 +75,9 @@ export function EditIdeaModal({ idea, onSuccess }) {
 
       <Modal.Backdrop>
         <Modal.Container placement="auto">
-          <Modal.Dialog className="sm:max-w-xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 rounded-3xl overflow-hidden shadow-2xl">
+          <Modal.Dialog className="sm:max-w-xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
             <Modal.CloseTrigger />
-            <Modal.Header className="border-b border-slate-100 dark:border-slate-300 py-4 px-6">
+            <Modal.Header className="border-b border-slate-100 dark:border-slate-800 py-4 px-6">
               <Modal.Heading className="text-lg font-black text-[#063f49] dark:text-teal-400">
                 Edit Startup Idea
               </Modal.Heading>
@@ -92,7 +92,7 @@ export function EditIdeaModal({ idea, onSuccess }) {
                       </Label>
                       <Input
                         placeholder="e.g. AI-Powered Resume Builder"
-                        className="rounded-2xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
+                        className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
                       />
                       <FieldError />
                     </TextField>
@@ -109,11 +109,11 @@ export function EditIdeaModal({ idea, onSuccess }) {
                           <Label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                             Category
                           </Label>
-                          <Select.Trigger className="rounded-2xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold">
+                          <Select.Trigger className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold">
                             <Select.Value />
                             <Select.Indicator />
                           </Select.Trigger>
-                          <Select.Popover className="border border-slate-200 dark:border-slate-300 rounded-2xl bg-white dark:bg-(--bg-card) shadow-xl overflow-hidden">
+                          <Select.Popover className="border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-(--bg-card) shadow-xl overflow-hidden">
                             <ListBox className="divide-y divide-slate-100 dark:divide-slate-800">
                               <ListBox.Item id="Tech" textValue="Tech" className="hover:bg-slate-50 dark:hover:bg-slate-800 transition font-bold px-4 py-2 cursor-pointer">
                                 Tech
@@ -163,7 +163,7 @@ export function EditIdeaModal({ idea, onSuccess }) {
                         <Input
                           type="number"
                           placeholder="5000"
-                          className="rounded-2xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
+                          className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
                         />
                         <FieldError />
                       </TextField>
@@ -176,7 +176,7 @@ export function EditIdeaModal({ idea, onSuccess }) {
                         </Label>
                         <Input
                           placeholder="e.g. Job seekers, grads"
-                          className="rounded-2xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
+                          className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
                         />
                         <FieldError />
                       </TextField>
@@ -187,7 +187,7 @@ export function EditIdeaModal({ idea, onSuccess }) {
                         </Label>
                         <Input
                           placeholder="e.g. ai, resume, career"
-                          className="rounded-2xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
+                          className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
                         />
                         <FieldError />
                       </TextField>
@@ -199,7 +199,7 @@ export function EditIdeaModal({ idea, onSuccess }) {
                       </Label>
                       <TextArea
                         placeholder="Describe the problem..."
-                        className="rounded-3xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold p-3"
+                        className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold p-3"
                       />
                       <FieldError />
                     </TextField>
@@ -210,7 +210,7 @@ export function EditIdeaModal({ idea, onSuccess }) {
                       </Label>
                       <TextArea
                         placeholder="Describe the solution..."
-                        className="rounded-3xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold p-3"
+                        className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold p-3"
                       />
                       <FieldError />
                     </TextField>
@@ -222,13 +222,13 @@ export function EditIdeaModal({ idea, onSuccess }) {
                       <Input
                         type="url"
                         placeholder="https://example.com/cover.jpg"
-                        className="rounded-2xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
+                        className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-[#063f49] dark:focus:border-teal-500 transition-all font-semibold"
                       />
                       <FieldError />
                     </TextField>
                   </div>
 
-                  <Modal.Footer className="border-t border-slate-100 dark:border-slate-300 pt-4 mt-6 flex justify-end gap-3">
+                  <Modal.Footer className="border-t border-slate-100 dark:border-slate-800 pt-4 mt-6 flex justify-end gap-3">
                     <Button
                       type="submit"
                       slot="close"

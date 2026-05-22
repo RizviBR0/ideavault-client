@@ -48,7 +48,7 @@ export function DeleteIdeaAlert({ idea, onSuccess }) {
 
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
-          <AlertDialog.Dialog className="sm:max-w-[440px] bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 rounded-3xl overflow-hidden shadow-2xl p-6">
+          <AlertDialog.Dialog className="sm:max-w-[440px] bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl p-6">
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header className="flex gap-3 items-center mb-4">
               <AlertDialog.Icon status="danger" className="text-red-500" />
@@ -61,11 +61,11 @@ export function DeleteIdeaAlert({ idea, onSuccess }) {
                 Are you sure you want to permanently delete <strong>{title}</strong>? All of its comments and data will be lost. This action cannot be undone.
               </p>
             </AlertDialog.Body>
-            <AlertDialog.Footer className="flex justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-300">
+            <AlertDialog.Footer className="flex justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
               <Button
                 slot="close"
                 variant="tertiary"
-                className="rounded-full border border-slate-200 dark:border-slate-300 px-5 py-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer"
+                className="rounded-full border border-slate-200 dark:border-slate-800 px-5 py-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer"
               >
                 Cancel
               </Button>

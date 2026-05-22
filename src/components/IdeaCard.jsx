@@ -35,7 +35,7 @@ const IdeaCard = ({ idea }) => {
   const colorClass = categoryColors[category] || categoryColors["Other"];
 
   return (
-    <div className="rounded-2xl overflow-hidden bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 transition hover:shadow-xl hover:-translate-y-1">
+    <div className="rounded-2xl overflow-hidden bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 transition hover:shadow-xl hover:-translate-y-1">
       {imageUrl && (
         <Image
           width={400}
@@ -72,7 +72,7 @@ const IdeaCard = ({ idea }) => {
           </div>
         )}
 
-        <div className="flex items-center justify-between pt-3 dark:border-slate-300">
+        <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
           <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
             <span className="flex items-center gap-1">
               <FiHeart className="text-sm" /> {likes}

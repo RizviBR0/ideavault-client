@@ -93,7 +93,7 @@ export default function MyIdeasPage() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <div className="p-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-sm">
+        <div className="p-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 shadow-sm">
           <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-1">
             Total Shared Ideas
           </span>
@@ -102,7 +102,7 @@ export default function MyIdeasPage() {
           </span>
         </div>
 
-        <div className="p-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-sm">
+        <div className="p-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 shadow-sm">
           <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-1">
             Total Community Likes
           </span>
@@ -111,7 +111,7 @@ export default function MyIdeasPage() {
           </span>
         </div>
 
-        <div className="p-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-sm sm:col-span-2 lg:col-span-1">
+        <div className="p-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 shadow-sm sm:col-span-2 lg:col-span-1">
           <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-1">
             Platform Standing
           </span>
@@ -132,7 +132,7 @@ export default function MyIdeasPage() {
             return (
               <div
                 key={idea._id}
-                className="rounded-3xl overflow-hidden bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 transition hover:shadow-xl hover:-translate-y-1 flex flex-col h-full"
+                className="rounded-3xl overflow-hidden bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 transition hover:shadow-xl hover:-translate-y-1 flex flex-col h-full"
               >
                 {idea.imageUrl && (
                   <div className="relative h-52 w-full">
@@ -163,7 +163,7 @@ export default function MyIdeasPage() {
                       {tagList.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-slate-200 dark:border-slate-300 px-3 py-0.5 text-xs text-slate-500 dark:text-slate-400"
+                          className="rounded-full border border-slate-200 dark:border-slate-800 px-3 py-0.5 text-xs text-slate-500 dark:text-slate-400"
                         >
                           {tag}
                         </span>
@@ -171,7 +171,7 @@ export default function MyIdeasPage() {
                     </div>
                   )}
 
-                  <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-300 flex items-center justify-between">
+                  <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                     <span className="flex items-center gap-1 text-xs font-bold text-slate-500 dark:text-slate-400">
                       <FiHeart className="text-sm text-red-500 fill-red-500" /> {idea.likes || 0}
                     </span>
@@ -179,7 +179,7 @@ export default function MyIdeasPage() {
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/ideas/${idea._id}`}
-                        className="rounded-full border border-slate-200 dark:border-slate-300 hover:border-[#063f49] dark:hover:border-teal-400 px-4 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-[#063f49] dark:hover:text-teal-400 transition cursor-pointer"
+                        className="rounded-full border border-slate-200 dark:border-slate-800 hover:border-[#063f49] dark:hover:border-teal-400 px-4 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-[#063f49] dark:hover:text-teal-400 transition cursor-pointer"
                       >
                         View
                       </Link>
@@ -193,7 +193,7 @@ export default function MyIdeasPage() {
           })}
         </div>
       ) : (
-        <div className="text-center py-20 px-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-sm max-w-2xl mx-auto">
+        <div className="text-center py-20 px-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto">
           <div className="w-16 h-16 rounded-full bg-teal-50 dark:bg-teal-950/20 text-[#063f49] dark:text-teal-400 flex items-center justify-center mx-auto mb-6">
             <FiPlus className="text-3xl" />
           </div>
