@@ -219,7 +219,7 @@ export default function MyInteractionsPage() {
           })}
         </div>
       ) : (
-        <div className="text-center py-20 px-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-sm max-w-2xl mx-auto">
+        <div className="text-center py-20 px-6 rounded-3xl bg-white dark:bg-(--bg-card) border border-slate-200 dark:border-slate-300 shadow-sm mx-auto">
           <div className="w-16 h-16 rounded-full bg-teal-50 dark:bg-teal-950/20 text-[#063f49] dark:text-teal-400 flex items-center justify-center mx-auto mb-6">
             <FiMessageSquare className="text-3xl" />
           </div>

@@ -104,7 +104,7 @@ export default function IdeasPage() {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 max-w-3xl mx-auto mb-12 p-4 rounded-3xl bg-white dark:bg-(--bg-card) shadow-md">
+        <div className="flex flex-col sm:flex-row gap-4 mx-auto mb-12 p-4 rounded-3xl bg-white dark:bg-(--bg-card) shadow-md">
           <div className="relative flex-1">
             <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-lg" />
             <input
